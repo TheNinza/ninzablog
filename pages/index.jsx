@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { firestore, fromMillis, postToJSON } from "../lib/firebase";
 import { useState } from "react";
 import PostFeed from "../components/PostFeed";
+import MetaTags from "../components/Metatag";
 
 export default function Home(props) {
   const [posts, setPosts] = useState(props.posts);
@@ -48,6 +49,10 @@ export default function Home(props) {
 
   return (
     <main>
+      <MetaTags
+        title="NinzaBlogs"
+        description="A multi-user blog website by Nikhil Gupta"
+      />
       <PostFeed posts={posts} />
 
       {!loading && !postsEnd && (
@@ -73,7 +78,7 @@ export const getServerSideProps = async (context) => {
 
   const posts = (await postsQuery.get()).docs.map(postToJSON);
 
-  console.log(posts);
+  // console.log(posts);
 
   return {
     props: { posts }, // will be passed to the page component as props
