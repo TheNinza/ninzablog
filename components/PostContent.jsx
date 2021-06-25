@@ -14,8 +14,8 @@ const PostContent = ({ post }) => {
         Written by{" "}
         <Link href={`/${post?.username}/`}>
           <a className="text-info">@{post?.username}</a>
-        </Link>
-        on {createdAt.toISOString()}
+        </Link>{" "}
+        on {createdAt.toLocaleString()}
       </span>
 
       <ReactMarkdown>{post?.content}</ReactMarkdown>
