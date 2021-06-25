@@ -28,6 +28,12 @@ function PostItem({ post, admin = false }) {
         </h2>
       </Link>
 
+      {admin && (
+        <Link href={`/admin/${post.slug}`}>
+          <button className="btn-blue">Edit</button>
+        </Link>
+      )}
+
       <footer>
         <span>
           {wordCount} words. {minutesToRead} min read
