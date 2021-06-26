@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import ImageUploader from "../../components/ImageUploader";
 
 const AdminPostEdit = ({}) => {
   return (
@@ -108,6 +109,7 @@ const PostForm = ({ defaultValues, postRef, preview }) => {
       )}
 
       <div className={preview ? styles.hidden : styles.controls}>
+        <ImageUploader />
         <textarea
           {...register("content", {
             required: "Required",
