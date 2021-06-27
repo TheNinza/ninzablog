@@ -13,7 +13,7 @@ const Custom404 = () => {
       <h1>404 - Oooops!! The page got lost in the internet</h1>
       <iframe
         src="https://giphy.com/embed/l2JehQ2GitHGdVG9Y"
-        frameborder="0"
+        frameBorder="0"
         width="480"
         height="362"
         allowFullScreen

@@ -1,6 +1,6 @@
 import styles from "../../styles/Admin.module.css";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import AuthCheck from "../../components/AuthCheck";
 import MetaTags from "../../components/Metatag";
@@ -38,6 +38,14 @@ const PostManager = () => {
     .doc(auth.currentUser.uid)
     .collection("posts")
     .doc(slug);
+
+  useEffect(async () => {
+    const snapshot = await postRef.get();
+
+    if (!snapshot.exists) {
+      router.push("/404");
+    }
+  }, []);
 
   const [post, loading] = useDocumentDataOnce(postRef);
 

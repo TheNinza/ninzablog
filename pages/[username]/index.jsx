@@ -1,3 +1,5 @@
+import router from "next/router";
+import AuthCheck from "../../components/AuthCheck";
 import PostFeed from "../../components/PostFeed";
 import UserProfile from "../../components/UserProfile";
 import { getUserWithUserName, postToJSON } from "../../lib/firebase";
@@ -6,6 +8,15 @@ const UserProfilePage = ({ user, posts }) => {
   return (
     <main>
       <UserProfile user={user} />
+      <AuthCheck fallback={<></>}>
+        <button
+          onClick={() => router.push("/admin")}
+          className="btn-blue push-left"
+        >
+          Edit Posts
+        </button>
+      </AuthCheck>
+
       <PostFeed posts={posts} />
     </main>
   );

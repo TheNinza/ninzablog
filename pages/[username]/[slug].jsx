@@ -52,9 +52,18 @@ export const getStaticProps = async ({ params }) => {
 
   if (userDoc) {
     const postRef = userDoc.ref.collection("posts").doc(slug);
-    post = postToJSON(await postRef.get());
 
-    path = postRef.path;
+    const snapShot = await postRef.get();
+
+    if (snapShot.exists) {
+      post = postToJSON(snapShot);
+
+      path = postRef.path;
+    } else {
+      return {
+        notFound: true,
+      };
+    }
   }
 
   return {
