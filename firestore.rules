@@ -12,7 +12,7 @@ service cloud.firestore {
         allow create: if isValidUser(userId);
       }
       
-      match /username/{username}{
+      match /usernames/{username}{
       	allow read;
         allow create: if isValidUsername(username);
       }
